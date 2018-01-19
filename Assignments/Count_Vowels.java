@@ -16,10 +16,13 @@ public class Vowel_count {
 			{
 				if(array[i]==array[j])
 				{
-					array[i]='\n';
+					array[j]='\n';
 				}
 			}
 		}
+		String news=new String(array).toString();
+		news = news.replaceAll("\\s+","");
+		System.out.println("revised string:"+ news);
 		for(i=0;i<str.length();i++)
 		{
 			if(array[i]=='a'||array[i]=='e'||array[i]=='i'||array[i]=='o'||array[i]=='u')
