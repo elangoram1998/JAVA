@@ -1,0 +1,41 @@
+class Solution {
+    static HashMap<String,Integer>hm=new HashMap<>();
+    public List<List<Integer>> generate(int numRows) {
+        ArrayList<List<Integer>> list=new ArrayList<List<Integer>>();
+        for(int i=1;i<=numRows;i++)
+        {
+            ArrayList<Integer>l=new ArrayList<>();
+            for(int j=1;j<=i;j++)
+            {
+                l.add(genTriangle(i,j));
+            }
+            list.add(l);
+        }
+        return list;
+    }
+    static int genTriangle(int i,int j)
+    {
+        String s="";
+        s=s+i+j;
+        int res;
+        if(hm.containsKey(s))
+        {
+            return hm.get(s);
+        }
+        if(j==1)
+        {
+            return 1;
+        }
+        if(i==j)
+        {
+            return 1;
+        }
+        if(j==0 || i==0)
+        {
+            return 0;
+        }
+        res= genTriangle(i-1,j)+genTriangle(i-1,j-1);
+        hm.put(s,res);
+        return res;
+    }
+}
